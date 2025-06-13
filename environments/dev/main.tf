@@ -26,3 +26,13 @@ module "shared_alerting" {
   alert_phone_endpoints = var.alert_phone_endpoints
   tags                  = module.shared_tagging.common_tags
 }
+
+# Core infrastructure modules
+module "networking" {
+  source = "../../modules/networking"
+
+  project_name = var.project_name
+  environment  = var.environment
+  vpc_cidr     = var.vpc_cidr
+  tags         = module.shared_tagging.common_tags
+}
