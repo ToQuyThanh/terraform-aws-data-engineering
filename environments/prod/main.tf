@@ -6,3 +6,13 @@ module "provider" {
     Owner       = "data-team"
   }
 }
+
+# Import shared configurations
+module "shared_tagging" {
+  source = "../../shared/tagging"
+  
+  project_name = var.project_name
+  environment  = var.environment
+  cost_center  = var.cost_center
+  owner        = var.owner
+}
