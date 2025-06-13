@@ -11,7 +11,7 @@ terraform {
   }
 
   backend "s3" {
-    bucket         = "data-platform-dev-terraform-state-1231"
+    bucket         = "data-platform-dev-terraform-state"
     key            = "data-platform/dev/terraform.tfstate"
     region         = "ap-southeast-1"
     encrypt        = true
