@@ -38,7 +38,7 @@ variable "alert_email_endpoints" {
   description = "List of email endpoints for alerts"
   type        = list(string)
   default     = []
-  
+
   validation {
     condition = alltrue([
       for email in var.alert_email_endpoints : can(regex("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", email))
@@ -51,4 +51,15 @@ variable "alert_phone_endpoints" {
   description = "List of phone numbers for SMS alerts"
   type        = list(string)
   default     = []
+}
+
+variable "vpc_cidr" {
+  description = "CIDR block for VPC"
+  type        = string
+  default     = "10.0.0.0/16"
+
+  validation {
+    condition     = can(cidrhost(var.vpc_cidr, 0))
+    error_message = "VPC CIDR must be a valid IPv4 CIDR block."
+  }
 }
