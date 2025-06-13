@@ -33,3 +33,22 @@ variable "owner" {
   type        = string
   default     = "data-team"
 }
+
+variable "alert_email_endpoints" {
+  description = "List of email endpoints for alerts"
+  type        = list(string)
+  default     = []
+  
+  validation {
+    condition = alltrue([
+      for email in var.alert_email_endpoints : can(regex("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", email))
+    ])
+    error_message = "All email endpoints must be valid email addresses."
+  }
+}
+
+variable "alert_phone_endpoints" {
+  description = "List of phone numbers for SMS alerts"
+  type        = list(string)
+  default     = []
+}
