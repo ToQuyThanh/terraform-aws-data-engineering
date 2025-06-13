@@ -15,3 +15,13 @@ module "shared_tagging" {
   cost_center  = var.cost_center
   owner        = var.owner
 }
+
+module "shared_alerting" {
+  source = "../../shared/alerting"
+  
+  project_name           = var.project_name
+  environment           = var.environment
+  alert_email_endpoints = var.alert_email_endpoints
+  alert_phone_endpoints = var.alert_phone_endpoints
+  tags                  = module.shared_tagging.common_tags
+}
