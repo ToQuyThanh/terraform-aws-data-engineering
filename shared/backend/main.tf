@@ -1,7 +1,7 @@
 # Backend resources for Terraform state management
 
 locals {
-  bucket_name = "${var.project_name}-${var.environment}-terraform-state"
+  bucket_name = "${var.project_name}-${var.environment}-terraform-state-1231"
   table_name  = "${var.project_name}-${var.environment}-terraform-locks"
 }
 

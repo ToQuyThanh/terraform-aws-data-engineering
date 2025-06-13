@@ -19,18 +19,3 @@ terraform {
   }
 }
 
-provider "aws" {
-  region = var.aws_region
-
-  # Default tags applied to all resources
-  default_tags {
-    tags = {
-      Project     = var.project_name
-      Environment = var.environment
-      ManagedBy   = "Terraform"
-      CostCenter  = var.cost_center
-      Owner       = var.owner
-    }
-  }
-}
-
